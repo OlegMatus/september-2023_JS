@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .form {
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+            border: 2px blue solid;
+        }
+        .wrapper {
+            width: 300px;
+            padding: 10px;
+        }
+        .item {
+            margin-top: 10px;
+            border: 2px red solid;
+        }
+        .flex{
+            display: flex;
+            justify-content: space-between;
+        }
+        table, td{
+            width: 500px;
+            height: 50px;
+            margin-top: 10px;
+            border: blue solid 2px;
+        }
+    </style>
+</head>
+<body>
+<form class="form wrapper" name="f3">
+    <label class="flex">Rows:<input type="number" name="rows"></label>
+    <label class="flex">Columns:<input type="number" name="columns"></label>
+    <label class="flex">Content:<input type="text" name="content"></label>
+    <button>Create table</button>
+</form>
+
+<div id="result"></div>
+
+<h1>Resolve 10 JS (task-7)</h1>
+<script src="main.js"></script>
+</body>
+</html>
