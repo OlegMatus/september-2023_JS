@@ -1,0 +1,54 @@
+.wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+}
+.line:before, .line:after {
+    display: block;
+    content: '';
+    background-color: #92867b;
+    height: 5px;
+}
+h1 {
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 40px;
+    color: #393532;
+}
+.userBlock{
+    width: 25%;
+    height: 50px;
+    padding: 5px;
+    margin: 1% 10% 1% 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #393532;
+    background: oldlace;
+}
+.postBlock{
+    width: 20%;
+    display: flex;
+    flex-flow: wrap;
+
+}
+.postContainer{
+    width: 100%;
+    display: flex;justify-content: center;
+}
+.linkDetails{
+    border: 1px solid brown;
+    text-decoration: none;
+    background: aliceblue;
+    border-radius: 5px;
+}
+.postOfUser{
+    width: 90%;
+    height: 25px;
+    /*background: gainsboro;*/
+    /*border: 2px solid #393532;*/
+    border-radius: 8px;
+}
