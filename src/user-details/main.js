@@ -1,38 +1,23 @@
-const getInfo = async () => {
-    const userId = new URL(location.href).searchParams.get('id');
+const getUserInfo = async () => {
+    try {
+        const userId = new URL(location.href).searchParams.get('id');
 
-    await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
-        .then(resp => resp.json())
-        .then(user => {
-            const userBlock = document.querySelector('#user-info');
-            const postBlock = document.querySelector('#post-info');
-
-            showUserDetails(user, userBlock);
-
-            const postOfUser = document.querySelector('#btn-post');
-
-            postOfUser.onclick = function () {
-                getTitle();
-            }
-        })
-    const getTitle = async () => {
-        await fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
+        await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
             .then(resp => resp.json())
-            .then(posts => {
+            .then(user => {
+                const userContainer = document.querySelector('#user-info');
 
-                posts.forEach(post => {
-                    const postBlock = document.createElement('div');
-                    const title = document.createElement('div');
+                showUserDetails(user, userContainer);
 
-                    postBlock.classList.add('wrapper');
-                    title.classList.add('postBlock');
+                const postOfUser = document.querySelector('#btn-post');
 
-                    title.innerText = `TITLE: ${post.title}`;
-
-                    postBlock.appendChild(title);
-                    document.body.appendChild(postBlock);
-                })
+                postOfUser.onclick = function () {
+                    getPostInfo(userId);
+                }
+                userContainer.after(postOfUser);
             })
+    } catch (e) {
+        console.error('An occurred error:', e);
     }
 
     function showUserDetails(user, parent) {
@@ -54,5 +39,33 @@ const getInfo = async () => {
         parent.append(userList);
         document.body.appendChild(parent);
     }
+
+    const getPostInfo = async (userId) => {
+        try {
+            const responsePosts = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`);
+            const posts = await responsePosts.json();
+
+            posts.forEach(post => {
+                const postContainer = document.querySelector('#post-info');
+                const postBlock = document.createElement('div');
+                const linkPostDetail = document.createElement('a');
+
+                postBlock.classList.add('post-block');
+
+                postBlock.innerText = `TITLE: ${post.title}`;
+                linkPostDetail.innerText = 'post-details';
+
+                linkPostDetail.onclick = () => {
+                    location.href = `../post-details/post-details.html?id=${post.id}`
+                }
+
+                postBlock.appendChild(linkPostDetail);
+                postContainer.appendChild(postBlock);
+                document.body.appendChild(postContainer);
+            })
+        } catch (e) {
+            console.error('Error fetching post:', e);
+        }
+    }
 }
-void getInfo();
+void getUserInfo();

@@ -2,7 +2,6 @@ const getUsers = async () => {
     await fetch(`https://jsonplaceholder.typicode.com/users`)
         .then(resp => resp.json())
         .then((users) => {
-            // const usersBlock = document.createElement('div');
             const wrapper = document.querySelector('#wrapper');
             wrapper.classList.add('wrapper');
 
@@ -10,7 +9,7 @@ const getUsers = async () => {
                 const userBlock = document.createElement('div');
                 const {id, name} = user;
                 userBlock.innerText = `id:${id}: name${name}`;
-                userBlock.classList.add('userBlock');
+                userBlock.classList.add('user-block');
 
                 const linkDetails = document.createElement('button');
                 linkDetails.innerText = 'details';
@@ -24,4 +23,4 @@ const getUsers = async () => {
             })
         })
 }
-getUsers().then();
+void getUsers();
