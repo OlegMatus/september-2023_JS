@@ -1,0 +1,154 @@
+body {
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    background: beige;
+
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+}
+
+.line:before, .line:after {
+    display: block;
+    content: '';
+    background-color: #92867b;
+    height: 5px;
+}
+
+h1 {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 40px;
+    color: #393532;
+}
+
+.user-block {
+    width: 28%;
+    height: 50%;
+    padding: 5px;
+    margin: 1% 10% 1% 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #393532;
+    background: burlywood;
+}
+
+.post-block {
+    width: 18vw;
+    height: 9vh;
+    margin: 5px;
+    padding: 3px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    background: khaki;
+    border: 2px solid #92867b;
+    justify-content: center;
+}
+
+.user-container {
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.post-container {
+    width: 100%;
+    height: 40%;
+    font-size: 13px;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+}
+
+.btn-userDetails {
+    border: 1px solid brown;
+    text-decoration: none;
+    background: aliceblue;
+    border-radius: 5px;
+}
+
+.btn-container {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn-post {
+    margin: 10px auto;
+    width: 90%;
+    height: 30px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: brown;
+    background: gainsboro;
+    border: 2px solid #393532;
+    border-radius: 8px;
+}
+
+#btn-post:hover {
+    color: aqua;
+    margin: 10px auto;
+    width: 90%;
+    height: 30px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: gainsboro;
+    border: 2px solid #393532;
+    border-radius: 8px;
+}
+
+a {
+    color: #cc4549;
+    font-size: 14px;
+}
+
+a:hover {
+    color: aqua;
+}
+
+.post-detail-container {
+    margin: 10px 0 10px 0;
+    width: 100vw;
+    height: 50vh;
+    background: azure;
+    display: flex;
+    align-items: center;
+}
+
+.comment-detail-container {
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+}
+
+.comment-block {
+    margin: 10px 0 10px 0;
+    padding: 5px;
+    background: azure;
+    width: 22%;
+}
