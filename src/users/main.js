@@ -6,9 +6,15 @@ const getUsers = async () => {
             wrapper.classList.add('wrapper');
 
             users.forEach(user => {
-                const userBlock = document.createElement('div');
                 const {id, name} = user;
-                userBlock.innerText = `id:${id}: name${name}`;
+
+                const userBlock = document.createElement('div');
+                const id_user = document.createElement('b');
+                const name_user = document.createElement('p');
+
+                id_user.innerText = `id: ${id}`;
+                name_user.innerText = `name: ${name}`;
+
                 userBlock.classList.add('user-block');
 
                 const linkDetails = document.createElement('button');
@@ -18,7 +24,7 @@ const getUsers = async () => {
                 linkDetails.onclick = () => {
                     location.href = `../user-details/user-details.html?id=${id}`
                 }
-                userBlock.appendChild(linkDetails);
+                userBlock.append(id_user,name_user,linkDetails);
                 wrapper.append(userBlock);
             })
         })

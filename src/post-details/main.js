@@ -12,7 +12,7 @@ const getPostById = async () => {
         }
         postContainer.appendChild(postDetailList);
     } catch (e) {
-
+console.error('Error fetching post:', e);
     }
 
     try {
@@ -32,7 +32,7 @@ const getPostById = async () => {
         commentContainer.appendChild(commentBlock);
         })
     } catch (e) {
-        // console.error('Error', e)
+        console.error('Error fetching comments:', e)
     }
 }
 void getPostById()

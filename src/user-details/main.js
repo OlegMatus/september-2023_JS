@@ -17,7 +17,7 @@ const getUserInfo = async () => {
                 userContainer.after(postOfUser);
             })
     } catch (e) {
-        console.error('An occurred error:', e);
+        console.error('Error fetching user details:', e);
     }
 
     function showUserDetails(user, parent) {
@@ -37,7 +37,6 @@ const getUserInfo = async () => {
             userList.appendChild(li);
         }
         parent.append(userList);
-        document.body.appendChild(parent);
     }
 
     const getPostInfo = async (userId) => {
@@ -61,10 +60,9 @@ const getUserInfo = async () => {
 
                 postBlock.appendChild(linkPostDetail);
                 postContainer.appendChild(postBlock);
-                document.body.appendChild(postContainer);
             })
         } catch (e) {
-            console.error('Error fetching post:', e);
+            console.error('Error fetching post details:', e);
         }
     }
 }
