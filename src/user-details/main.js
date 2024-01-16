@@ -13,11 +13,14 @@ class UserDetails {
         this._userId = userId;
     }
     run() {
-        void this._getUser();
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this._getUser();
+        });
     }
     _getUser() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                // const userId = new URL(location.href).searchParams.get('id');
                 const infoUserBlock = document.querySelector('#user-details');
                 const btnGetTitlePost = document.querySelector('#btn-post');
                 const user = yield fetch(`https://jsonplaceholder.typicode.com/users/${this._userId}`).then(resp => resp.json());
@@ -68,9 +71,10 @@ class UserDetails {
                 });
             }
             catch (e) {
+                console.error('Error fetching post info:', e);
             }
         });
     }
 }
 const userDetails = new UserDetails();
-userDetails.run();
+void userDetails.run();

@@ -40,17 +40,18 @@ class UserDetails {
         this._userId = userId;
     }
 
-    public run(): void {
-        void this._getUser();
+    public async run(): Promise<void> {
+        await this._getUser();
     }
 
     private async _getUser(): Promise<void> {
         try {
+            // const userId = new URL(location.href).searchParams.get('id');
             const infoUserBlock = document.querySelector('#user-details') as HTMLDivElement;
             const btnGetTitlePost = document.querySelector('#btn-post') as HTMLButtonElement;
 
             const user = await fetch(`https://jsonplaceholder.typicode.com/users/${this._userId}`).then(resp => resp.json());
-            this._showUserDetails(user, infoUserBlock)
+            this._showUserDetails(user, infoUserBlock);
 
             btnGetTitlePost.onclick = async (): Promise<void> => {
                 await this._getPostInfo(this._userId);
@@ -82,7 +83,7 @@ class UserDetails {
     private async _getPostInfo(userId: string): Promise<void> {
         try {
             const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`);
-            const posts = await response.json();
+            const posts: IPost[] = await response.json();
             posts.map((post: IPost) => {
                 const postContainer = document.querySelector('#post-info') as HTMLDivElement;
                 const postBlock = document.createElement('div');
@@ -100,10 +101,10 @@ class UserDetails {
                 postContainer.appendChild(postBlock);
             })
         } catch (e) {
-
+            console.error('Error fetching post info:', e)
         }
     }
 }
 
 const userDetails = new UserDetails();
-userDetails.run();
+void userDetails.run();

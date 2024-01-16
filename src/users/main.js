@@ -8,20 +8,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const userService = {
-    getAll: () => fetch(`https://jsonplaceholder.typicode.com/users`).then(resp => resp.json()),
-    // getUserById: (): Promise<IUser> => fetch(`https://jsonplaceholder.typicode.com/users/${userId}`).then(resp => resp.json()),
-};
 class Users {
-    // private userId: string;
-    // constructor() {
-    //     this.userId = new URL(location.href).searchParams.get('id');
-    //
-    // }
     static showUsers() {
         return __awaiter(this, void 0, void 0, function* () {
             const userList = document.querySelector('#wrapper');
-            const users = yield userService.getAll();
+            const users = yield fetch(`https://jsonplaceholder.typicode.com/users`).then(resp => resp.json());
             users.forEach(user => {
                 const { id, name } = user;
                 const userBlock = document.createElement('div');
@@ -42,4 +33,4 @@ class Users {
         });
     }
 }
-Users.showUsers();
+void Users.showUsers();

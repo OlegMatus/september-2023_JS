@@ -2,21 +2,12 @@ interface IUser {
     id: number,
     name: string,
 }
-const userService = {
-    getAll: (): Promise<IUser[]> => fetch(`https://jsonplaceholder.typicode.com/users`).then(resp => resp.json()),
-    // getUserById: (): Promise<IUser> => fetch(`https://jsonplaceholder.typicode.com/users/${userId}`).then(resp => resp.json()),
-
-}
 
 class Users {
-    // private userId: string;
-    // constructor() {
-    //     this.userId = new URL(location.href).searchParams.get('id');
-    //
-    // }
     public static async showUsers(): Promise<void> {
         const userList = document.querySelector('#wrapper') as HTMLDivElement;
-        const users = await userService.getAll();
+        const users: IUser[] = await fetch(`https://jsonplaceholder.typicode.com/users`).then(resp => resp.json());
+
         users.forEach(user => {
             const {id, name} = user;
             const userBlock = document.createElement('div');
@@ -35,10 +26,10 @@ class Users {
             btn.onclick = (): void => {
                 location.href = `../user-details/user-details.html?id=${user.id}`
             }
-            userBlock.append(id_user,name_user,btn);
+            userBlock.append(id_user, name_user, btn);
             userList.appendChild(userBlock);
         })
     }
 }
 
-Users.showUsers()
+void Users.showUsers()
